@@ -1,0 +1,30 @@
+{
+  "name": "obs.remote",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "babel-cli ",
+    "start": "nodemon build/index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "kefir": "^3.8.0",
+    "partial.lenses": "^13.1.1",
+    "ramda": "^0.25.0",
+    "tcomb": "^3.2.24",
+    "ws": "^3.3.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^22.0.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "jest": "^22.0.3",
+    "jsverify": "^0.8.3",
+    "nodemon": "^1.14.1",
+    "regenerator-runtime": "^0.11.1",
+    "tcomb-generate": "^0.3.0",
+    "webpack": "^3.10.0"
+  }
+}
