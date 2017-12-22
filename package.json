@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "babel-cli ",
-    "start": "nodemon build/index.js",
+    "start": "nodemon src/index.js --exec babel-node",
     "test": "jest"
   },
   "dependencies": {
@@ -26,5 +25,8 @@
     "regenerator-runtime": "^0.11.1",
     "tcomb-generate": "^0.3.0",
     "webpack": "^3.10.0"
+  },
+  "optionalDependencies": {
+    "@types/jest": "^21.1.9"
   }
 }
