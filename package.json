@@ -4,11 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/index.js --exec babel-node",
+    "start": "env-cmd development nodemon src/index.js --exec babel-node",
     "test": "jest"
   },
   "dependencies": {
+    "debug": "^3.1.0",
+    "karet.util": "^0.17.2",
     "kefir": "^3.8.0",
+    "kefir.atom": "^5.5.0",
+    "kefir.combines": "^4.1.5",
     "partial.lenses": "^13.1.1",
     "ramda": "^0.25.0",
     "tcomb": "^3.2.24",
@@ -19,6 +23,7 @@
     "babel-jest": "^22.0.3",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "env-cmd": "^7.0.0",
     "jest": "^22.0.3",
     "jsverify": "^0.8.3",
     "nodemon": "^1.14.1",
