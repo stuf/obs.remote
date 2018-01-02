@@ -27,9 +27,9 @@ export const newSocketState = args => {
     socket,
     connected: state.view('connected')
   };
-}
+};
 
-export const listenToEvent = socket => (type, id) => {
+export const listenToEvent = socket => type => {
   return stream(emitter => {
     debug('Attaching listener to event `%s`', type);
 
