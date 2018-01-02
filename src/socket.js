@@ -1,5 +1,4 @@
-import { constant, stream, fromCallback } from 'kefir';
-import { lift, lift1 } from 'kefir.combines';
+import { stream } from 'kefir';
 import Atom from 'kefir.atom';
 import * as U from 'karet.util';
 import * as R from 'ramda';
@@ -10,13 +9,6 @@ import Debug from 'debug';
 const debug = Debug('obs.remote:socket');
 
 const defaultHost = 'localhost:4444';
-
-const mkWebSocket1 = R.constructN(1, WebSocket);
-const mkWebSocket2 = R.constructN(2, WebSocket);
-const mkWebSocket3 = R.constructN(3, WebSocket);
-
-const onEvent1 = R.invoker(1, 'on');
-const onEvent2 = R.invoker(2, 'on');
 
 const hostIn = L.get(['address',
                       L.defaults(defaultHost),
@@ -71,9 +63,10 @@ export const send = (socket, type, args = {}) => {
   socket.send(JSON.stringify(socketArgs));
 
   debug('Return filtered stream for message with ID %s', id);
-  return U.template(listen('message')).map(JSON.parse).filter(x => {
-    const msgId = x['message-id'];
-    debug('Filtering message %s with ID %s; %s', msgId, id, msgId === id);
-    return msgId === id;
-  }).take(1);
+
+  return U.seq(listen('message'),
+               U.template,
+               U.lift1(JSON.parse),
+               U.skipUnless(R.whereEq({ 'message-id': id })),
+               U.takeFirst(1));
 };
