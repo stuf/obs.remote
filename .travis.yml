@@ -2,6 +2,14 @@ language: node_js
 node_js:
   - "7"
   - "8"
+env:
+  global:
+    - CC_TEST_REPORTER_ID=3228e39b4fa199b52d235576b29d0e7a6c8d3f8d23e044dfad9890b841315190
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 cache:
   yarn: true
-
