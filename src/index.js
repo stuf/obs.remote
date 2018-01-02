@@ -33,6 +33,10 @@ open$.onValue(() => {
 
   const resp = s.send(socket, 'GetSceneList');
 
+  resp.onError(err => {
+    debug('Got error', err);
+  });
+
   const scenes = M.OBS.scenesIn(resp);
 
   scenes.onValue(H.set(M.scenesIn(state)));

@@ -1,21 +1,20 @@
 {
   "name": "obs.remote",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.1.0",
+  "main": "dist/obs.remote.js",
+  "module": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack -p",
+    "build": "env-cmd production webpack --progress --config config/webpack.production.js",
     "start": "env-cmd development nodemon src/index.js --exec babel-node",
     "test": "jest",
     "coverage": "jest --coverage",
-    "lint": "eslint"
+    "lint": "eslint src/"
   },
   "dependencies": {
     "debug": "^3.1.0",
     "karet.util": "^0.17.2",
     "kefir": "^3.8.0",
-    "kefir.atom": "^5.5.0",
-    "kefir.combines": "^4.1.5",
     "partial.lenses": "^13.1.1",
     "ramda": "^0.25.0",
     "tcomb": "^3.2.24",
@@ -24,8 +23,10 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-jest": "^22.0.3",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "babelrc-rollup": "^3.0.0",
     "env-cmd": "^7.0.0",
     "eslint": "^4.14.0",
     "jest": "^22.0.3",
@@ -33,7 +34,9 @@
     "nodemon": "^1.14.1",
     "regenerator-runtime": "^0.11.1",
     "tcomb-generate": "^0.3.0",
-    "webpack": "^3.10.0"
+    "uglifyjs-webpack-plugin": "^1.1.5",
+    "webpack": "^3.10.0",
+    "webpack-merge": "^4.1.1"
   },
   "optionalDependencies": {
     "@types/jest": "^21.1.9"
