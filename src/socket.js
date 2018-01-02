@@ -1,5 +1,4 @@
 import { stream } from 'kefir';
-import Atom from 'kefir.atom';
 import * as U from 'karet.util';
 import * as R from 'ramda';
 import * as L from 'partial.lenses';
@@ -18,7 +17,7 @@ const hostIn = L.get(['address',
 
 export const newSocketState = args => {
   debug('Create new socket state object');
-  const state = Atom();
+  const state = U.atom();
   const _args = hostIn(args);
   const socket = new WebSocket(_args);
 
